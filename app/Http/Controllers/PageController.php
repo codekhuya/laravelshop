@@ -19,9 +19,10 @@ class PageController extends Controller
         //return view('page.trangchu',['slide'=>$slide]);
         //cach 2
         
-        $new_product = Product::where('new',1)->get();
+        $new_product = Product::where('new',1)->paginate(4);
         //dd($new_product);
-        return view('page.trangchu',compact('slide','new_product'));
+        $sanpham_khuyenmai = Product::where('promotion_price','<>',0)->paginate(8);
+        return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai'));
     }
 
     public function getLoaiSp(){
