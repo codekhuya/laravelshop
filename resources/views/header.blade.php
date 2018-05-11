@@ -91,10 +91,10 @@
 				<nav class="main-menu">
 					<ul class="l-inline ov">
 						<li><a href="{{route('trang-chu')}}">Trang chủ</a></li>
-						<li><a href="{{route('loaisanpham')}}">Loại sản phẩm</a>
+						<li><a href="#">Loại sản phẩm</a>
 							<ul class="sub-menu">
 								@foreach($loai_sp as $loai)
-								<li><a href="">{{$loai->name}}</a></li>
+								<li><a href="{{route('loaisanpham',$loai->id)}}">{{$loai->name}}</a></li>
 								@endforeach
 							</ul>
 						</li>

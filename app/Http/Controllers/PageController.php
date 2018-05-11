@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Slide;
 use App\Product;
+use App\ProductType;
 class PageController extends Controller
 {
     public function getIndex(){
@@ -25,8 +26,12 @@ class PageController extends Controller
         return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai'));
     }
 
-    public function getLoaiSp(){
-        return view('page.loai_sanpham');
+    public function getLoaiSp($type){
+        $sp_theoloai = Product::where('id_type',$type)->get();
+        $sp_khac = Product::where('id_type','<>',$type)->inRandomOrder()->paginate(3);
+        $loai = ProductType::all();
+        $loai_id = ProductType::where('id',$type)->first(); 
+        return view('page.loai_sanpham',compact('sp_theoloai','sp_khac','loai','loai_id'));
     }
 
     public function getChitiet(){
