@@ -34,8 +34,10 @@ class PageController extends Controller
         return view('page.loai_sanpham',compact('sp_theoloai','sp_khac','loai','loai_id'));
     }
 
-    public function getChitiet(){
-        return view('page.chitiet_sanpham');
+    public function getChitiet(Request $req ){
+        $sanpham = Product::where('id',$req->idsp)->first();
+        $sp_tuongtu = Product::where('id_type',$sanpham->id_type)->paginate(3);
+        return view('page.chitiet_sanpham', compact('sanpham','sp_tuongtu'));
     }
 
     public function getLienhe(){
