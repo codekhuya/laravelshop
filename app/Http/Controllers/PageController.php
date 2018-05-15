@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Slide;
 use App\Product;
 use App\ProductType;
+use Session;
+use App\Cart;
 class PageController extends Controller
 {
     public function getIndex(){
@@ -46,5 +48,14 @@ class PageController extends Controller
 
     public function getGioithieu(){
         return view('page.gioithieu');
+    }
+
+    public function getAddtoCart(Request $req, $id){
+        $product = Product::find($id);
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $id);
+        $req->session()->put('cart', $cart);
+        return redirect()->back();
     }
 }
