@@ -35,7 +35,17 @@ Route::get('gioi-thieu',[
     'as'=>'gioithieu',
     'uses'=>'PageController@getGioithieu'
 ]);
+
 Route::get('add-to-card/{id}',
     ['as'=>'themgiohang',
     'uses'=>'PageController@getAddtoCart']
+);
+Route::get('delete-cart/{id}',
+    ['as'=>'xoagiohang',
+    'uses' =>'PageController@getDelItemCart']
+);
+
+Route::post('dat-hang',
+['as'=>'xoagiohang',
+'uses'=>'PageController@postCheckout']
 );
