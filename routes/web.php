@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('index',[
+Route::get('/',[
     'as'=>'trang-chu',
     'uses'=>'PageController@getIndex'
 ]);
@@ -45,7 +45,25 @@ Route::get('delete-cart/{id}',
     'uses' =>'PageController@getDelItemCart']
 );
 
-Route::post('dat-hang',
-['as'=>'xoagiohang',
+Route::get('dat-hang',[
+    'as'=>'dathang',
+    'uses'=>'PageController@getDatHang'
+]);
+Route::get('dat-hang2',
+['as'=>'dathang2',
 'uses'=>'PageController@postCheckout']
 );
+
+Route::get('dang-nhap',[
+    'as'    => 'dangnhap',
+    'uses'  => 'PageController@getLogin'
+]);
+
+Route::get('dang-ky',[
+    'as'    =>'dangky',
+    'uses'  =>'PageController@getSignup'
+]);
+Route::post('dang-ky',[
+    'as'    =>'dangky',
+    'uses'  =>'PageController@postSignup'
+]);

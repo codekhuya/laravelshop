@@ -10,8 +10,8 @@
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
 						<li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
-						<li><a href="#">Đăng kí</a></li>
-						<li><a href="#">Đăng nhập</a></li>
+					<li><a href="{{route('dangky')}}">Đăng ký</a></li>
+					<li><a href="{{route('dangnhap')}}">Đăng nhập</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -32,11 +32,11 @@
 					</div>
 
 					<div class="beta-comp">
-					@if(Session::has('cart'))
+					
 						<div class="cart">
 							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (@if(Session::has('cart')){{Session('cart')->totalQty}}@else Trống @endif) <i class="fa fa-chevron-down"></i></div>
+						@if(Session::has('cart'))	
 							<div class="beta-dropdown cart-body">
-							
 								@foreach($product_cart as $product)
 								<div class="cart-item">
 								<a class="cart-item-delete" href="{{route('xoagiohang',$product['item']['id'])}}">
