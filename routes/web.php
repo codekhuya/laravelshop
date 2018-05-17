@@ -58,6 +58,10 @@ Route::get('dang-nhap',[
     'as'    => 'dangnhap',
     'uses'  => 'PageController@getLogin'
 ]);
+Route::post('dang-nhap',[
+    'as'=>'dangnhap',
+    'uses' => 'PageController@postLogin'
+]);
 
 Route::get('dang-ky',[
     'as'    =>'dangky',
@@ -66,4 +70,14 @@ Route::get('dang-ky',[
 Route::post('dang-ky',[
     'as'    =>'dangky',
     'uses'  =>'PageController@postSignup'
+]);
+
+Route::get('dang-xuat',[
+    'as'=>'dangxuat',
+    'uses'=>'PageController@getLogout'
+]);
+
+Route::get('search',[
+    'as'=>'search',
+    'uses'=>'PageController@getSearch'
 ]);
